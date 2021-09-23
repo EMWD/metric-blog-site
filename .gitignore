@@ -1,4 +1,6 @@
 venv/
+vscode/
+.vscode
 idea/
 .idea
 mysite/mysite/settings.py
