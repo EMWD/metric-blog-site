@@ -24,15 +24,44 @@
         <div class="row">
             <div class=" col-md-8 col-md-10 mx-auto">
                 <div class="site-heading">
-                    <h3 class=" site-heading my-4 mt-3 text-white">Лучшее из мира IT в онлайн формате</h3>
-                    <p class="text-light">Стань автором в разделе -> "Публикации" </p>
-                    </p>
+                    <h3 class=" site-heading my-4 mt-3 text-white">Информация о авторах сайта</h3>
+                    <h5 class="text-light">
+                    <p>Funkcje zostały podzielone na abstrakcyjne</p>
+                    wzorce odpowiednie dla większości przypadków użycia.
+                    W miarę omawiania coraz większej liczby możliwych przypadków 
+                    wyszedł na jaw jeden problem - szablony stały się niewygodne 
+                    i nie dawały się rozszerzać. Ograniczało to ich zastosowanie 
+                    w wielu rzeczywistych zastosowaniach.
+                    <p>Widoki oparte na klasach zostały stworzone, aby rozwiązać</p> 
+                    ten sam problem, co ogólne funkcje widoku: aby uprościć programowanie. 
+                    Zostało to jednak zaimplementowane za pomocą domieszek: zestawów klas, 
+                    które sprawiają, że ogólne widoki klas są bardziej rozszerzalne i 
+                    elastyczne w dostosowywaniu niż odpowiadające im funkcje.
+                    <p>Jeśli wcześniej z powodzeniem używałeś funkcji i masz</p> 
+                    wystarczająco dużo ich możliwości, nie powinieneś traktować ogólnych 
+                    widoków klas jako innego równoważnego sposobu rozwiązywania problemów. 
+                    Spróbuj spojrzeć świeżym okiem na czasy, kiedy takie podejście 
+                    byłoby bardziej odpowiednie.
+                    <p>Jeśli wcześniej z powodzeniem używałeś funkcji i masz</p> 
+                    Zestaw narzędzi Django do klas bazowych i mixinów pozwala 
+                    na tworzenie ogólnych widoków klas tak elastycznych, jak to tylko możliwe, 
+                    z wieloma hookami, takimi jak domyślne wartości atrybutów lub 
+                    implementacje metod bazowych, które często nie muszą być 
+                    nadpisywane w każdym przypadku z osobna . 
+                    Na przykład, zamiast używać atrybutu klasy bazowej form_class, 
+                    implementacja wywołuje metodę get_form, która wywołuje metodę get_form_class, 
+                    która z kolei po prostu zwraca domyślnie atrybut klasy bazowej form_class. 
+                    <p>Widoki oparte na klasach zostały stworzone, aby rozwiązać</p> 
+                    Daje to możliwość określenia, który formularz ma być używany zarówno w atrybucie, 
+                    jak i dynamicznie w nadpisanej metodzie. Na pierwszy rzut oka takie zachowanie 
+                    powoduje niepotrzebną złożoność w prostych przypadkach, ale konieczne jest 
+                    uwzględnienie największych możliwych przypadków użycia.
+                    </h5>
                 </div>
             </div>
         </div>
     </div>
 </header>
-<div class="container">
     <div class="row">
         <!-- Blog Entries Column -->
         <div class="col-md-8 mt-3 left custom-padding-top-2">
@@ -46,9 +75,8 @@
                 </div>
             </div>
             {% endfor %}
+            {% block footer %} {% include 'footer.html' %} {% endblock footer %}
         </div>
-        {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
     </div>
 </div>
-{% block footer %} {% include 'footer.html' %} {% endblock footer %}
 {%endblock%}

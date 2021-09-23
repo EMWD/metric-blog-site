@@ -1,32 +1,58 @@
-from django.views import generic
+from django.views import View, generic
+from django.views.generic.base import TemplateView
+from django.contrib.auth.views import LoginView, LogoutView
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
 from .models import Post
 from icecream import ic
+from .utils import *
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, logout
 
-class PostListView(generic.ListView):
-    # Get only published posts
+from .forms import *
+from .models import *
+from .utils import *
+
+
+class PostListView(PostListMixin, generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'index.html'
 
-    def get_context_data(self, **kwargs):
-        context = super(PostListView, self).get_context_data(**kwargs)
-        context['footer_color'] = 'text-dark'
-        return context
 
-class PostDetailView(generic.DetailView):
+class PostDetailView(PostDetailMixin, generic.DetailView):
     model = Post
     template_name = 'post_detail.html'
 
-    def get_context_data(self, **kwargs):
-        context = super(PostDetailView, self).get_context_data(**kwargs)
-        context['footer_color'] = 'text-white'
-        return context
 
-class AboutPageView(generic.ListView):
-    model = Post
-    queryset = Post.objects.filter(status=1).order_by('-created_on')
+class AddPostView(CreateView):
+    form_class = AddPostForm
+    template_name = 'add_post.html'
+    success_url = reverse_lazy('home')
+
+
+class AboutPageView(TemplateView):
     template_name = 'about.html'
 
-    def get_context_data(self, **kwargs):
-        context = super(AboutPageView, self).get_context_data(**kwargs)
-        context['footer_color'] = 'text-dark'
-        return context
+
+class PolicyPageView(TemplateView):
+    template_name = 'policy.html'
+
+
+class LoginUser(LoginView):
+    form_class = LoginUserForm
+    template_name = 'login.html'
+
+    def get_success_url(self):
+        return reverse_lazy('home')
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('home')
+
+
+class RegisterUser(CreateView):
+    form_class = RegisterUserForm
+    template_name = 'register.html'
+    success_url = reverse_lazy('login')
+

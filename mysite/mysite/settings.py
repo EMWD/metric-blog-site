@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-=5to(#8ct_(jz&3)=*1smv_k7gzkby94%dota5fz2nz3rlspmq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1']
 
 
 # Application definition
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'captcha',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -152,4 +154,15 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+LOCAL_STYLES = {
+    'white-footer-text': 'text-white', 
+    'dark-footer-text': 'text-dark', 
+}
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
 ]
