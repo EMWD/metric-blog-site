@@ -6,6 +6,7 @@ from django.core.exceptions import ValidationError
 from captcha.fields import CaptchaField
 from .models import *
 from icecream import ic
+from .helpers import AccessResolver
 
 
 class RegisterUserForm(UserCreationForm):
@@ -33,7 +34,7 @@ class AddPostForm(forms.ModelForm):
         label='Заголовок', widget=forms.TextInput(attrs={'class': 'form-input'}))
 
     text = forms.CharField(
-        label='Текст статьи', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+        label='Текст статьи', widget=forms.Textarea(attrs={'class': 'input-text-area'}))
 
     class Meta:
         model = Post

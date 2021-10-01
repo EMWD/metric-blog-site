@@ -386,6 +386,13 @@ ul.lang-list li a:hover {color: #fdc073;}
 	background-color: #cbcccd;
 }
 
+.input-text-area {
+    width: 250px;
+	height: 150px;
+    font-size: 16px;
+	background-color: #cbcccd;
+}
+
 .form-label {
     display: inline-block;
     min-width: 150px;
