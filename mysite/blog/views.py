@@ -2,7 +2,7 @@ from django.http.response import HttpResponseNotAllowed
 from django.views import View, generic
 from django.views.generic.base import TemplateView
 from django.contrib.auth.views import LoginView, LogoutView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Post
 from icecream import ic
@@ -27,27 +27,23 @@ class PostDetailView(PostDetailMixin, generic.DetailView):
     template_name = 'post_detail.html'
 
 
-def test_access(request):
-    access = False
-    if settings.ADMIN.get('name') == request.user.username:
-        access = True
-    ic(request.user.username)
-    ic(access)
-    return access
-
-
-class AddPostView(CreateView):
-
+class AddPostView(AccessMixin, CreateView):
     form_class = AddPostForm
     template_name = 'add_post.html'
     success_url = reverse_lazy('home')
 
     def form_valid(self, form):
-        if test_access(self.request):
+        if AccessMixin().get_access_by_request(self.request):
             form.save(commit=False)
             return super(AddPostView, self).form_valid(form)
         else:
             return HttpResponseNotAllowed('Only for admin')
+
+
+class DeletePostView(DeleteView):
+    model = Post
+    template_name = 'delete_post.html'
+    success_url = reverse_lazy('home')
 
 
 class AboutPageView(TemplateView):
