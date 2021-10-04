@@ -55,13 +55,13 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
 
-                        {% if request.user.is_authenticated %}
+                        {% if request.user.is_superuser %}
                         <li class="nav-item text-black">
                             <a class="nav-link text-black font-weight-bold" href="/add_post">Новый пост</a>
                         </li>    
                         {% endif %}
 
-                        {% if request.user.is_authenticated %}
+                        {% if request.user.is_superuser %}
                         <li class="nav-item text-black">
                             <a class="nav-link text-black font-weight-bold" href="/delete_post">Удалить пост</a>
                         </li>    
