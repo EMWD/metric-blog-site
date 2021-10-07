@@ -3,6 +3,7 @@ vscode/
 .vscode
 idea/
 .idea
+./mysite/static/
 mysite/mysite/settings.py
 __pycache__/
 *.py[cod]
