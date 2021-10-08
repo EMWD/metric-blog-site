@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     {% load static %}
-    <link rel"stylesheet" href = "{% static 'style.css' %}">
+    <link rel"stylesheet" href = "{% static 'script.css' %}">
     <head>
         <title>Blog site</title>
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
@@ -10,6 +10,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous" />
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="{% static '/js/script.js' %}"></script>
     </head>
 
     <body>
@@ -42,6 +44,14 @@
             padding-left:8px;
             padding-right:8px
         }
+        a {
+            color: black;
+            text-decoration: none;
+        }
+        a:hover {
+            color: black;
+            text-decoration: none;
+        }
     </style>
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow" id="mainNav">
@@ -52,18 +62,34 @@
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
+                {% if request.user.is_superuser %}
+                    <a class="trigger_popup_fricc ">Удалить пост</a>
+                    <div class="hover_bkgr_fricc">
+                        <span class="helper"></span>
+                        <div>
+                            {% for post in post_list %}
+                            <div class="card mb-4">
+                            <a href="{% url 'delete_post' post.slug %}">
+                                <div class="card-body">
+                                    <h2 class="card-title">{{ post.title }}</h2>
+                                    <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
+                                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-dark">Подробнее ...</a>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                            <p>Выберите пост для удаления</p>
+                        </div>
+                    </div>  
+                {% endif %}
+
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
 
                         {% if request.user.is_superuser %}
                         <li class="nav-item text-black">
                             <a class="nav-link text-black font-weight-bold" href="/add_post">Новый пост</a>
-                        </li>    
-                        {% endif %}
-
-                        {% if request.user.is_superuser %}
-                        <li class="nav-item text-black">
-                            <a class="nav-link text-black font-weight-bold" href="/delete_post">Удалить пост</a>
                         </li>    
                         {% endif %}
 
