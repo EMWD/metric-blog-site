@@ -1,8 +1,9 @@
-from django.http.response import HttpResponseNotAllowed
+from django.http.response import HttpResponse, HttpResponseNotAllowed
 from django.views import View, generic
 from django.views.generic.base import TemplateView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic.edit import CreateView, DeleteView
+from wsgiref.util import FileWrapper
 from django.urls import reverse_lazy
 from .models import Post
 from icecream import ic
@@ -47,6 +48,7 @@ class DeletePostView(DeleteView):
 
 
 class AboutPageView(TemplateView):
+    
     template_name = 'about.html'
 
 
@@ -71,3 +73,9 @@ class RegisterUser(CreateView):
     form_class = RegisterUserForm
     template_name = 'register.html'
     success_url = reverse_lazy('login')
+
+def test_video(request):
+    file = FileWrapper(open(f"{settings.BASE_DIR}/blog/static/videos/tv1.mp4", 'rb'))
+    response = HttpResponse(file, content_type='video/mp4')
+    response['Content-Disposition'] = 'attachment; filename=tv1.mp4'
+    return response
