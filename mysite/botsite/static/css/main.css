@@ -7,6 +7,12 @@ body {
     text-rendering: optimizeLegibility;
     border-top: 6px #3667db solid !important;
     font-size: 16px;
+    -ms-overflow-style: none;  
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 .nav-link {
@@ -57,8 +63,6 @@ body {
     padding: 160px 50px !important;
     text-align: center !important;
     color: #fff !important;
-    background-image: url("../assets/wavy-purple-by-nouridio11.svg") !important;
-    /* background-image: url("../assets/BotLogo_.png"); */
     background-size: 300px 100px;
     background-position: bottom !important;
     background-size: 300% !important;
@@ -152,7 +156,6 @@ body {
 
 
 .page_end {
-    background-image: url("../assets/wavy-light-by-nouridio11.svg") !important;
     background-position: bottom !important;
     background-size: 200% !important;
     background-repeat: no-repeat !important;
