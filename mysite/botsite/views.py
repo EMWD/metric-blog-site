@@ -32,3 +32,9 @@ class FeaturesView(generic.ListView):
 class CommandsView(generic.ListView):
     queryset = []
     template_name = 'commands.html'
+
+
+class AboutView(generic.ListView):
+    queryset = []
+    template_name = 'about.html'
+

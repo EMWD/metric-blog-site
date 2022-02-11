@@ -3,6 +3,29 @@
 {% block navbar %} {% include 'page_parts/navbar.html' %} {% endblock navbar %}
 {% block header %} {% include 'page_parts/header.html' %} {% endblock header %}
 
+<div class="heading heading-min">
+    <h3 class="little-title">To display a list of available commands type bot <b>!help</b></h3>
+    <h4 class='little-title'>Music:</h4>
+    <p>&nbsp; <b class='command'>join</b> &nbsp; - &nbsp;Joins a voice channel.</p>
+    <p>&nbsp; <b class='command'>leave</b> &nbsp; Clears the queue and leaves the voice channel.</p>
+    <p>&nbsp; <b class='command'>loop</b> &nbsp;- &nbsp;Loops the currently playing song.</p>
+    <p>&nbsp; <b class='command'>now</b> &nbsp;- &nbsp; Displays the currently playing song.</p>
+    <p>&nbsp; <b class='command'>pause</b> &nbsp;- Pauses the currently playing song.</p>
+    <p>&nbsp; <b class='command'>play</b> &nbsp;- &nbsp;Plays a song.</p>
+    <p>&nbsp; <b class='command'>queue</b> &nbsp;- Shows the player&apos;s queue.</p>
+    <p>&nbsp; <b class='command'>remove</b> &nbsp;- Removes a song from the queue at a given index.</p>
+    <p>&nbsp; <b class='command'>resume</b> &nbsp;- Resumes a currently paused song.</p>
+    <p>&nbsp; <b class='command'>shuffle</b> Shuffles the queue.</p>
+    <p>&nbsp; <b class='command'>skip</b> &nbsp;- &nbsp;Vote to skip a song. The requester can automatically skip.</p>
+    <p>&nbsp; <b class='command'>stop</b> &nbsp;- &nbsp;Stops playing song and clears the queue.</p>
+    <p>&nbsp; <b class='command'>summon</b> &nbsp;- Summons the bot to a voice channel.</p>
+    <p>&nbsp; <b class='command'>volume</b> &nbsp;- Sets the volume of the player.</p>
+    <h4 class='little-title'>Common:</h4>
+    <p>&nbsp; <b class='command'>help</b> &nbsp; &nbsp;- Shows this message</p>
+    <p><br></p>
+    <p>Type !help command for more info on a command.</p>
+    <p>You can also type !help category for more info on a category.</p>
 
+</div>
 
 {% block footer %} {% include 'page_parts/footer.html' %} {% endblock footer %}

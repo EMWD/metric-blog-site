@@ -69,10 +69,20 @@ body::-webkit-scrollbar {
     background-repeat: no-repeat !important;
 }
 
+.heading-min {
+    padding: 50 50px !important;
+}
+
 .title {
     line-height: 90px !important;
     margin-bottom: -2px !important;
     font-size: 36px !important
+}
+
+.little-title {
+    color: rgb(255, 255, 255) !important;
+    font-size: 30px !important;
+    font-family: 'Lato', sans-serif;
 }
 
 .subtitle {
@@ -81,6 +91,23 @@ body::-webkit-scrollbar {
     font-family: 'Lato', sans-serif;
 }
 
+.command-name {
+    color: rgba(255, 255, 255, 0.685) !important;
+    font-size: 22px !important;
+    font-family: 'Lato', sans-serif;
+}
+
+.command {
+    color: rgb(0, 255, 136) !important;
+    font-size: 26px !important;
+    font-family: 'Lato', sans-serif;
+}
+
+.donate-link {
+    color: rgb(0, 255, 136) !important;
+    font-size: 26px !important;
+    font-family: 'Lato', sans-serif;
+}
 
 .features {
     text-align: center !important;
